@@ -1,8 +1,8 @@
-LI-MAX-SUBARY(imax, low, high, A) \\ initialization: imax = high
+LI-MAX-SUBARY(imax, low, high, A) \\ initialization: imax = high + 1
 if  low == high
     return (low, high, A[low])
 else
-	if imax > high - 1
+	if imax > high
 		isum = -inf
 		sum = 0
 		for (i = high to low)
