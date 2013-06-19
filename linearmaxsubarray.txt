@@ -2,7 +2,7 @@ LI-MAX-SUBARY(imax, low, high, A) \\ initialization: imax = high
 if  low == high
     return (low, high, A[low])
 else
-	if imax < high - 1
+	if imax > high - 1
 		isum = -inf
 		sum = 0
 		for (i = high to low)
@@ -10,8 +10,10 @@ else
 			if sum > isum
 				isum = sum
 				imax = i
+	else
+		isum = sigma(A, imax, high)
 	(plow, phigh, psum) = LI-MAX-SUBARY(imax, low, high-1, A)
 	if isum > psum
-        	return(i, high, isum)
+        	return(imax, high, isum)
     	else
         	return(plow, phigh, psum)
