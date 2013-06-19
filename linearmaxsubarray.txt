@@ -1,11 +1,17 @@
-MAX-SUBARRAY(low, high, A)
+LI-MAX-SUBARY(imax, low, high, A) \\ initialization: imax = high
 if  low == high
     return (low, high, A[low])
-else 
-    (low', high', sum') = M-S(low, high-1, A)
-    (i, sum'') = max(sum(A, low+i, high)) 
-    if sum'' > sum'
-        return(i, high, sum'')
-    else
-        return(low', high', sum')
-    
+else
+	if imax < high - 1
+		isum = -inf
+		sum = 0
+		for (i = high to low)
+			sum = sum + A[i]
+			if sum > isum
+				isum = sum
+				imax = i
+	(plow, phigh, psum) = LI-MAX-SUBARY(imax, low, high-1, A)
+	if isum > psum
+        	return(i, high, isum)
+    	else
+        	return(plow, phigh, psum)
